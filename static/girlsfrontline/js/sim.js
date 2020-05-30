@@ -3751,6 +3751,85 @@ function simulateBattle() {
           doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
         }
 
+        if (action.type == 'bamboo') {
+          if (action.timeLeft != 0) {
+            action.timeLeft--;
+            doll.battle.action_queue.push(action);
+            continue;
+          }
+
+          //unless specified, charged shots cannot miss and cannot crit and ignore armor
+          let sureHit = 'sureHit' in action ? action.sureHit : true;
+          let canCrit = 'canCrit' in action ? action.canCrit : false;
+          let ignoreArmor = 'ignoreArmor' in action ? action.ignoreArmor : true;
+
+          if (bambooStacks) {
+            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][bambooStacks] : doll.battle.fp * action.multiplier;
+            if (!('multiplier' in action)) {
+              dmg = doll.battle.fp;
+            }
+          } else {
+            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][5] : doll.battle.fp * action.multiplier;
+            if (!('multiplier' in action)) {
+              dmg = doll.battle.fp;
+          }
+
+          if (!ignoreArmor) {
+            dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
+          }
+
+          if (!sureHit) {
+            dmg *= (doll.battle.acc / (doll.battle.acc + enemy.battle.eva));
+          }
+          if (canCrit) {
+            dmg *= damageUtils.getExpectedCritDamageMultiplier(doll, action);
+          }
+          dmg *= enemy.battle.vulnerability;
+          dmg *= doll.battle.busylinks;
+
+          doll.shots.hits += sureHit ? doll.battle.busylinks : Math.floor(doll.battle.busylinks * (doll.battle.acc / (doll.battle.acc + enemy.battle.eva)));
+          doll.shots.total += doll.battle.busylinks;
+
+          if ('piercing' in action) {
+            dmg *= enemy.count + 1;
+          }
+          if ('skillDamageBonus' in action) {
+            let skillbonus = $.isArray(action.skillDamageBonus) ? 1 + (action.skillDamageBonus[action.level - 1] / 100) : 1 + (action.skillDamageBonus / 100);
+            if ('victories' in action) {
+              skillbonus = Math.pow(skillbonus, action.victories);
+            }
+            dmg *= skillbonus;
+          }
+
+          doll.battle.busylinks -= Math.min(action.busylinks, doll.links);
+
+          if ('after' in action) {
+            action.after.level = action.level;
+            if (action.after.type == 'buff') {
+              activateBuff(doll, action.after, enemy);
+            } else {
+              doll.battle.effect_queue.push(action.after);
+            }
+          }
+
+          if ('modifySkill' in action) {
+            modifySkill(doll, action, enemy, currentFrame);
+          }
+
+          doll.battle.skilldamage += Math.round(dmg);
+
+          if (currentFrame <= 30 * 8 + 1) {
+            totaldamage8s += dmg;
+          }
+          if (currentFrame <= 30 * 12 + 1) {
+            totaldamage12s += dmg;
+          }
+          if (currentFrame <= 30 * 20 + 1) {
+            totaldamage20s += dmg;
+          }
+          graphData.y[i].data[currentFrame] += Math.round(dmg);
+        }
+
         if (action.type == 'chargedshot') {
           if (action.timeLeft != 0) {
             action.timeLeft--;
@@ -5552,6 +5631,11 @@ const SKILL_CONTROL = {
   35: function (doll) {
     //springfield
     let bambooStacks = parseInt($('.springfield-skill').val());
+    if (bambooStacks) {
+      doll.skill.effects[0].delay = 1 + bambooStacks;
+    } else {
+      doll.skill.effects[0].delay = 1;
+    }
   }
 };
 
