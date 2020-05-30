@@ -29,7 +29,6 @@ let graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C
 let buttonsWithOpenTooltips = [], mousedOverTooltip = null;
 let selectModalInitialized = false;   // Set to true after doll select modal initialized
 let allowDollSelectTooltip = false;   // Bugfix for mouseover tooltips
-let bambooStacks;
 
 const FAIRY_GROWTH_FACTORS = {
   basic: {
@@ -3764,18 +3763,10 @@ function simulateBattle() {
           let canCrit = 'canCrit' in action ? action.canCrit : false;
           let ignoreArmor = 'ignoreArmor' in action ? action.ignoreArmor : true;
 
-          if (bambooStacks) {
-            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][bambooStacks] : doll.battle.fp * action.multiplier;
-            if (!('multiplier' in action)) {
-              dmg = doll.battle.fp;
-            }
-          } else {
-            dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][5] : doll.battle.fp * action.multiplier;
-            if (!('multiplier' in action)) {
-              dmg = doll.battle.fp;
-            }
+          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1] : doll.battle.fp * action.multiplier;
+          if (!('multiplier' in action)) {
+            dmg = doll.battle.fp;
           }
-
           if (!ignoreArmor) {
             dmg = Math.max(1, dmg + Math.min(2, doll.battle.ap - enemy.battle.armor));
           }
@@ -5632,14 +5623,13 @@ const SKILL_CONTROL = {
   },
   35: function (doll) {
     //springfield
+    doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
     let bambooStacks = parseInt($('.springfield-skill').val());
     if (bambooStacks) {
       doll.skill.effects[0].delay = 1 + bambooStacks;
-    } else {
-      doll.skill.effects[0].delay = 1;
+      action.multiplier += bambooStacks;
     }
-  }
-};
+  },
 
 const SKILL_CONTROL_HTML = {
   97: function (doll) {
