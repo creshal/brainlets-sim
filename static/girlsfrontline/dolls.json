@@ -32863,7 +32863,7 @@
         "construct_time": 0,
         "uncraftable": true,
         "en_craftable": false,
-        "en_released": false,
+        "en_released": true,
         "artist": "ASK",
         "voice": "Yukana",
         "name_skill1": "Lucky Trigger",
