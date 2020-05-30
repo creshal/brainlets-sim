@@ -3971,6 +3971,7 @@
                 }
             ]
         },
+        "skill_control": true,
         "tooltip_skill2": "",
         "tooltip_tiles": "Skill Cooldown -15%",
         "tiles": {
