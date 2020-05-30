@@ -24378,7 +24378,7 @@
         "growth_rating": 125,
         "construct_time": 2700,
         "uncraftable": true,
-        "en_craftable": true,
+        "en_craftable": false,
         "en_released": true,
         "artist": "shin556",
         "voice": "TBD",
