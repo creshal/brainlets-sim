@@ -3772,6 +3772,7 @@ function simulateBattle() {
             dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][5] : doll.battle.fp * action.multiplier;
             if (!('multiplier' in action)) {
               dmg = doll.battle.fp;
+            }
           }
 
           if (!ignoreArmor) {
