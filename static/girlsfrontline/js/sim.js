@@ -29,6 +29,7 @@ let graphColors = ['#7CB5EC', '#434348', '#90ED7D', '#F7A35C', '#8085E9', '#F15C
 let buttonsWithOpenTooltips = [], mousedOverTooltip = null;
 let selectModalInitialized = false;   // Set to true after doll select modal initialized
 let allowDollSelectTooltip = false;   // Bugfix for mouseover tooltips
+let bambooStacks;
 
 const FAIRY_GROWTH_FACTORS = {
   basic: {
