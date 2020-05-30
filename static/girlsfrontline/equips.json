@@ -554,7 +554,7 @@
     "rof": 0,
     "critdmg": 0,
     "crit": 0,
-    "ap": 35,
+    "ap": 55,
     "armor": 0,
     "nightview": 0,
     "rounds": 0,
@@ -575,7 +575,7 @@
     "en_released": true,
     "construct_time": 900,
     "name": "M61 Armor-Piercing Ammo",
-    "tooltip": "Armor Piercing +35"
+    "tooltip": "Armor Piercing +55"
   },
   {
     "id": 18,
@@ -588,7 +588,7 @@
     "rof": 0,
     "critdmg": 0,
     "crit": 0,
-    "ap": 50,
+    "ap": 75,
     "armor": 0,
     "nightview": 0,
     "rounds": 0,
@@ -609,7 +609,7 @@
     "en_released": true,
     "construct_time": 1800,
     "name": "M993 Armor-Piercing Ammo",
-    "tooltip": "Armor Piercing +50-75"
+    "tooltip": "Armor Piercing +75-112"
   },
   {
     "id": 19,
@@ -622,7 +622,7 @@
     "rof": 0,
     "critdmg": 0,
     "crit": 0,
-    "ap": 65,
+    "ap": 100,
     "armor": 0,
     "nightview": 0,
     "rounds": 0,
@@ -643,7 +643,7 @@
     "en_released": true,
     "construct_time": 2700,
     "name": "Mk169 Armor-Piercing Ammo",
-    "tooltip": "Armor Piercing +65-97"
+    "tooltip": "Armor Piercing +100-150"
   },
   {
     "id": 20,
@@ -656,7 +656,7 @@
     "rof": 0,
     "critdmg": 0,
     "crit": 0,
-    "ap": 80,
+    "ap": 120,
     "armor": 0,
     "nightview": 0,
     "rounds": 0,
@@ -677,7 +677,7 @@
     "en_released": true,
     "construct_time": 3300,
     "name": "Mk211 High-Explosive Armor-Piercing Ammo",
-    "tooltip": "Armor Piercing +80-120"
+    "tooltip": "Armor Piercing +120-180"
   },
   {
     "id": 21,
@@ -1948,7 +1948,7 @@
     "rof": 8,
     "critdmg": 0,
     "crit": 0,
-    "ap": 85,
+    "ap": 130,
     "armor": 0,
     "nightview": 0,
     "rounds": 0,
@@ -1969,7 +1969,7 @@
     "en_released": true,
     "construct_time": 0,
     "name": "National Match-Grade Armor Piercing Ammo",
-    "tooltip": "Armor Piercing +85-127, Rate of Fire +8-10"
+    "tooltip": "Armor Piercing +130-195, Rate of Fire +8-10"
   },
   {
     "id": 59,
