@@ -5630,6 +5630,7 @@ const SKILL_CONTROL = {
       action.multiplier += bambooStacks;
     }
   },
+};
 
 const SKILL_CONTROL_HTML = {
   97: function (doll) {
