@@ -3910,7 +3910,6 @@
         "id_index": 36,
         "aliases": [
             "M1903 Springfield",
-            "Dorm Mom"
         ],
         "api_name": "m1903",
         "spritesheet_row": 35,
@@ -4701,7 +4700,8 @@
         "id": 44,
         "id_index": 46,
         "aliases": [
-            "Karabiner Achtundneunzig Kurz"
+            "Karabiner Achtundneunzig Kurz",
+            "Dorm Mom"
         ],
         "api_name": "98k",
         "spritesheet_row": 4,
