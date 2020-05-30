@@ -5627,7 +5627,7 @@ const SKILL_CONTROL = {
     let bambooStacks = parseInt($('.springfield-skill').val());
     if (bambooStacks) {
       doll.skill.effects[0].delay = 1 + bambooStacks;
-      action.multiplier += bambooStacks;
+      doll.skill.effects[0].multiplier[doll.skilllevel - 1] += bambooStacks;
     }
   },
 };
