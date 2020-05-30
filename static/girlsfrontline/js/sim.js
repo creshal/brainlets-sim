@@ -5548,6 +5548,10 @@ const SKILL_CONTROL = {
     } else {
       doll.skill2.effects[1].target = 'none';
     }
+  },
+  35: function (doll) {
+    //springfield
+    let bambooStacks = parseInt($('.springfield-skill').val());
   }
 };
 
@@ -5734,6 +5738,12 @@ const SKILL_CONTROL_HTML = {
     Check the box if you want the sim to apply this debuff to enemies (default), or uncheck it to have the sim not use the debuff.
     Click apply to save.</p><br />
     <input type="checkbox" class="stechkinmod-skill" checked>Apply evasion debuff to enemies<p></p>`;
+  },
+  35: function (doll) {
+    //springfield
+    return `<p>Springfield's skill can have anywhere between 0 to 5 stacks.
+    Enter a number between 0 and 5 indicating how many stacks she should fire her skill at.</p><br />
+    <input type="number" class="springfield-skill">Number of stacks</input><br><p></p>`;
   }
 };
 
