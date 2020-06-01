@@ -5625,6 +5625,18 @@ const SKILL_CONTROL = {
     //springfield
     doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
     let bambooStacks = parseInt(  $('.springfield-skill').val());
+    if (parseInt($('.springfield-skill').val()) === '') {
+      alert("You didn't enter a number! Stacks will be set to the default value, 5.")
+      bambooStacks = 5;
+    }
+    if (parseInt($('.springfield-skill').val()) < 0) {
+      alert("You entered a number less than 0! Stacks will be set to 0.")
+      bambooStacks = 0;
+    }
+    if (parseInt($('.springfield-skill').val()) > 5) {
+      alert("You entered a number greater than 5! Stacks will be set to 5.")
+      bambooStacks = 5;
+    }
     if (bambooStacks === NaN) {
       bambooStacks = 5;
     }
