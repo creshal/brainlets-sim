@@ -3763,7 +3763,7 @@ function simulateBattle() {
           let canCrit = 'canCrit' in action ? action.canCrit : false;
           let ignoreArmor = 'ignoreArmor' in action ? action.ignoreArmor : true;
 
-          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1] : doll.battle.fp * action.multiplier;
+          dmg = $.isArray(action.multiplier) ? doll.battle.fp * action.multiplier[action.level - 1][0] : doll.battle.fp * action.multiplier;
           if (!('multiplier' in action)) {
             dmg = doll.battle.fp;
           }
@@ -5624,10 +5624,11 @@ const SKILL_CONTROL = {
   35: function (doll) {
     //springfield
     doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
+    let bambooStacks = 5;
     let bambooStacks = parseInt($('.springfield-skill').val());
     if (bambooStacks) {
-      doll.skill.effects[0].delay = 1 + bambooStacks;
-      doll.skill.effects[0].multiplier[doll.skilllevel - 1] += bambooStacks;
+      doll.skill.effects[0].delay += bambooStacks;
+      doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (bambooStacks * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
     }
   },
 };
