@@ -5624,14 +5624,12 @@ const SKILL_CONTROL = {
   35: function (doll) {
     //springfield
     doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
-    let bambooStacks = parseInt($('.springfield-skill').val());
-    if (bambooStacks) {
-      doll.skill.effects[0].delay += bambooStacks;
-      doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (bambooStacks * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
-    } else {
-      doll.skill.effects[0].delay += 5;
-      doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (5 * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
+    let bambooStacks = parseInt(  $('.springfield-skill').val());
+    if (bambooStacks === NaN) {
+      bambooStacks = 5;
     }
+    doll.skill.effects[0].delay += bambooStacks;
+    doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (bambooStacks * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
   },
 };
 
@@ -5822,8 +5820,8 @@ const SKILL_CONTROL_HTML = {
   35: function (doll) {
     //springfield
     return `<p>Springfield's skill can have anywhere between 0 to 5 stacks.
-    Enter a number between 0 and 5 indicating how many stacks she should fire her skill at.</p><br />
-    <input type="number" class="springfield-skill">Number of stacks</input><br><p></p>`;
+    Enter a number between 0 and 5 indicating how many stacks she should fire her skill at. If no value is entered, the skill will be fired at 5 stacks.</p><br />
+    <input type="number" class="springfield-skill"></input><br><p></p>`;
   }
 };
 
