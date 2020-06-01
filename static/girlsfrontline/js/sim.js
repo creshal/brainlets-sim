@@ -5624,11 +5624,13 @@ const SKILL_CONTROL = {
   35: function (doll) {
     //springfield
     doll.skill = $.extend(true, {}, dollData[doll.id - 1].skill);
-    let bambooStacks = 5;
     let bambooStacks = parseInt($('.springfield-skill').val());
     if (bambooStacks) {
       doll.skill.effects[0].delay += bambooStacks;
       doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (bambooStacks * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
+    } else {
+      doll.skill.effects[0].delay += 5;
+      doll.skill.effects[0].multiplier[doll.skilllevel - 1][0] += (5 * doll.skill.effects[0].multiplier[doll.skilllevel - 1][1]);
     }
   },
 };
