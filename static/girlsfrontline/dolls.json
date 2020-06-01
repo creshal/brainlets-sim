@@ -3938,18 +3938,18 @@
         "icon_name_skill1": "aimattackdistancetarge",
         "tooltip_skill1": "Initial CD: 10s, CD: 16s<br>After aiming for 1.5s, shoot the furthest target for 6x damage",
         "skill": {
-            "icd": 10,
+            "icd": 5,
             "cd": [
-                20,
-                19.6,
-                19.1,
-                18.7,
-                18.2,
-                17.8,
-                17.3,
-                16.9,
-                16.4,
-                16
+                15,
+                14.6,
+                14.1,
+                13.7,
+                13.2,
+                12.8,
+                12.3,
+                11.9,
+                11.4,
+                11
             ],
             "effects": [
                 {
